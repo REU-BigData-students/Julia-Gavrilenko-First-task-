@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import xlrd
 """Open file
-""" 
+"""
 rb = xlrd.open_workbook('zp.xlsx')
 """Select active sheet
 """
@@ -11,8 +11,8 @@ sheet = rb.sheet_by_index(0)
 
 
 def main():
-        """Format names of economic sectors: make all letters in lower case, remove 
-        extra gaps and find the maximum wage in thе sector 
+        """Format names of economic sectors: make all letters in lower case, remove
+        extra gaps and find the maximum wage in thе sector
         over the period 1995-2015
         """
         print ('Укажите сектор экономики')
@@ -24,18 +24,18 @@ def main():
         max_value(s)
         min_value(s)
         graph(s)
-"""Format names of economic sectors: make all letters in lower case, 
-remove extra gaps and find the maximum wage in thе sector 
-over the period 1995-2015
-"""
 
 
 def max_value(s):
+        """Format names of economic sectors: make all letters in lower case,
+        remove extra gaps and find the maximum wage in thе sector
+        over the period 1995-2015
+        """
         data = ''
-        l = 0 
+        l = 0
         """in a loop for all rows
         """
-        for row in range(1, sheet.nrows): 
+        for row in range(1, sheet.nrows):
             data = sheet.cell_value(row, 0)
             clear_data = ' '.join(data.split())
             low_data = clear_data.lstrip().lower()
@@ -56,20 +56,20 @@ def max_value(s):
                 for col in range(1, sheet.ncols):
                     if value == sheet.cell_value(row, col):
                         print (
-                            'Максимальная заработная плата ' + 
-                            'по данному сектору экономики была в ', 
-                            int(sheet.cell_value(0, col)), 'году и составила',  
+                            'Максимальная заработная плата ' +
+                            'по данному сектору экономики была в ',
+                            int(sheet.cell_value(0, col)), 'году и составила',
                             value, 'рублей')
         if l == 0:
             print ('По указанному сектору экономики нет данных')
         return s
-"""Format names of economic sectors: make all letters in lower case, 
-remove extra gaps and find the minimum wage in thе sector 
-over the period 1995-2015
-"""
 
 
 def min_value(s):
+        """Format names of economic sectors: make all letters in lower case,
+        remove extra gaps and find the minimum wage in thе sector
+        over the period 1995-2015
+        """
         data = ''
         """in a loop for all rows
         """
@@ -92,18 +92,18 @@ def min_value(s):
                         for col in range(1, sheet.ncols):
                                 if value == sheet.cell_value(row, col):
                                         print (
-                                            'Минимальная заработная плата ' + 
-                                            'по данному сектору экономики ' + 
-                                            'была в', 
-                                            int(sheet.cell_value(0, col)),   
-                                            'году и составила', 
-                                            value, 'рублей')   
+                                            'Минимальная заработная плата ' +
+                                            'по данному сектору экономики ' +
+                                            'была в',
+                                            int(sheet.cell_value(0, col)),
+                                            'году и составила',
+                                            value, 'рублей')
         return s
-"""The graph of the dynamics of values in the sector over the period 1995-2015
-"""
 
 
 def graph(s):
+        """The graph of the dynamics of values in the sector over the period 1995-2015
+        """
         masx = []
         masy = []
         for col in range(1, sheet.ncols):
@@ -128,3 +128,4 @@ def graph(s):
 
 if __name__ == "__main__":
         main()
+
