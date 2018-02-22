@@ -2,24 +2,22 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import xlrd
-"""Open file
-"""
-rb = xlrd.open_workbook('zp.xlsx')
-"""Select active sheet
-"""
-sheet = rb.sheet_by_index(0)
 
 
 def main():
     lst = []
-    maximum = max_value(lst)
-    minimum = min_value(lst)
     graph(lst)
 
 
 def max_value(lst):
     """Find the maximum value by sector in each year
     """
+    """Open file
+    """
+    rb = xlrd.open_workbook('zp.xlsx')
+    """Select active sheet
+    """
+    sheet = rb.sheet_by_index(0)
     lst = []
     print('Максимальное значение по секторам экономики в каждом году')
     for col in range(1, sheet.ncols):
@@ -46,6 +44,12 @@ def max_value(lst):
 def min_value(lst):
     """Find the minimum value by sector in each year
     """
+    """Open file
+    """
+    rb = xlrd.open_workbook('zp.xlsx')
+    """Select active sheet
+    """
+    sheet = rb.sheet_by_index(0)
     lst = []
     print('Минимальное значение по секторам экономики в каждом году')
     for col in range(1, sheet.ncols):
