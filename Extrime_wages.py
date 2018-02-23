@@ -92,24 +92,12 @@ def graph(lst):
     ax.set_ylabel('Wages')
     ax.set_title('The highest and lowest wages by years')
     ax.set_xticks(ind)
-    ax.set_xticklabels((
+    labels = ax.set_xticklabels((
         '1995 ', '2000 ', '2001 ', '2002 ', '2003 ', '2004 ', '2005 ',
         '2006 ', '2007 ', '2008 ', '2009 ', '2010 ', '2011 ', '2012 ', '2013 ',
         '2014 ', '2015 '))
+    plt.setp(labels, rotation=30, fontsize=10)
     ax.legend((rects1[0], rects2[0]), ('Max', 'Min'))
-
-    
-    def autolabel(rects):
-        """
-        Attach a text label above each bar displaying its height
-        """
-        for rect in rects:
-            height = rect.get_height()
-            ax.text(rect.get_x() + rect.get_width()/2., 1.05*height,
-                    '%d' % int(height),
-                    ha='center', va='bottom')
-    autolabel(rects1)
-    autolabel(rects2)
     plt.show()
     return lst
 
